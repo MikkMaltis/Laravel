@@ -13,7 +13,7 @@ class AuthorController extends Controller
     public function index()
     {
         return view('author.index', [
-            'authors' => Author::all()   
+            'authors' => Author::paginate(30),
         ]);
     }
 
@@ -38,7 +38,10 @@ class AuthorController extends Controller
      */
     public function show(Author $author)
     {
-        return $author;
+        return view('author.view', [
+            'author' => $author,
+            'books' => $author->books()->paginate(30),
+        ]);
     }
 
     /**
@@ -62,6 +65,7 @@ class AuthorController extends Controller
      */
     public function destroy(Author $author)
     {
-        //
+        $author->delete();
+        return redirect()->route('author.index')->with('success', 'Author deleted successfully.');
     }
 }
