@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+        <h2 class="font-semibold text-xl  dark:text-gray-200 leading-tight">
             {{ __('Orders') }}
         </h2>
     </x-slot>
@@ -11,14 +11,14 @@
                 <ul>
                     @foreach ($orders as $order)
                         <div class="flex justify-between border-b text-xl">
-                            <li class="text-white">{{ $order->client->first_name }} {{ $order->client->last_name }}</li>
-                            <li class="text-white">Order
+                            <li class="">{{ $order->client->first_name }} {{ $order->client->last_name }}</li>
+                            <li class="">Order
                                 nr: {{ $order->id }}</li>
                             <div>
-                                <button class="text-white font-bold px-4 rounded">
+                                <button class=" font-bold px-4 rounded">
                                     <a href="{{ route('orders.index', $order->id) }}">Show</a>
                                 </button>
-                                <button class="text-white font-bold px-4 rounded">
+                                <button class=" font-bold px-4 rounded">
                                     <a href="{{ route('orders.edit', $order->id) }}">Edit</a>
                                 </button>
                             </div>

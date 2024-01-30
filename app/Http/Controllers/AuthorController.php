@@ -68,4 +68,9 @@ class AuthorController extends Controller
         $author->delete();
         return redirect()->route('author.index')->with('success', 'Author deleted successfully.');
     }
+
+        public function edit(Author $author)
+    {
+        return view('authors.edit', compact('author'));
+    }
 }
